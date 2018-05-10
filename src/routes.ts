@@ -1,23 +1,28 @@
-import {UserController} from "./controller/UserController";
+import { CategoryController } from './controller/CategoryController';
 
 export const Routes = [{
     method: "get",
-    route: "/users",
-    controller: UserController,
+    route: "/categories",
+    controller: CategoryController,
     action: "all"
 }, {
-    method: "get",
-    route: "/users/:id",
-    controller: UserController,
-    action: "one"
-}, {
     method: "post",
-    route: "/users",
-    controller: UserController,
+    route: "/categories",
+    controller: CategoryController,
     action: "save"
 }, {
+    method: "get",
+    route: "/categories/:id",
+    controller: CategoryController,
+    action: "getOne" 
+}, {
     method: "delete",
-    route: "/users",
-    controller: UserController,
-    action: "remove"
+    route: "/categories/:id",
+    controller: CategoryController,
+    action: "deleteCategory" 
+}, {
+    method: "put",
+    route: "/categories",
+    controller: CategoryController,
+    action: "updateCategory" 
 }];
