@@ -41,7 +41,12 @@ export class CategoryController {
     async getOne(request: Request, response: Response, next: NextFunction): Promise<void> {
         let categoryId: number = request.params.id;
 
-        let category: Category = await this.categoryRepository.findOne(categoryId);
+        // Cargando la categoría con sus respectivos productos.
+        let category: Category = await this.categoryRepository
+            .createQueryBuilder("category")
+            .leftJoinAndSelect("category.Products", "product")
+            .where("category.CategoryId = :categoryId", { categoryId: categoryId })
+            .getOne();
 
         if(category !== null && category !== undefined) {
             response.json(category);
