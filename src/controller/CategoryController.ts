@@ -29,7 +29,7 @@ export class CategoryController {
     async save(request: Request, response: Response, next: NextFunction): Promise<void> {
         // Validaciones del modelo acá... 
 
-        let category: Category = await this.categoryRepository.save(request.body);
+        let category: Category = await this.categoryRepository.save(request.body as Category);
 
         response.status(201);
         response.json({
